@@ -1,0 +1,45 @@
+.container{
+  height: 400px;
+  width: 400px;
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.square {
+  height: 50px;
+  width: 50px;
+  float: left;
+}
+
+.square:hover { background-color: yellow }
+
+.selected { border: 1px solid red }
+
+.even { background-color: #F8F8F8 }
+
+.odd { background-color: grey }
+
+.white-pawn {}
+
+.black-pawn {}
+
+.white-king {}
+
+.black-king {}
+
+.white-queen {}
+
+.black-queen {}
+
+.white-rook {}
+
+.black-rook {}
+
+.white-bishop {}
+
+.black-bishop {}
+
+.white-knight {}
+
+.black-knight {}
