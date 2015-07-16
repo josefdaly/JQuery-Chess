@@ -10,6 +10,7 @@
   height: 50px;
   width: 50px;
   float: left;
+  background-size: 50px 50px;
 }
 
 .square:hover { background-color: yellow }
@@ -20,26 +21,26 @@
 
 .odd { background-color: grey }
 
-.white-pawn {}
+.white-pawn { background-image: url("https://upload.wikimedia.org/wikipedia/commons/0/04/Chess_plt60.png") }
 
-.black-pawn {}
+.black-pawn { background-image: url("https://upload.wikimedia.org/wikipedia/commons/c/cd/Chess_pdt60.png") }
 
-.white-king {}
+.white-king { background-image: url("https://upload.wikimedia.org/wikipedia/commons/3/3b/Chess_klt60.png") }
 
-.black-king {}
+.black-king { background-image: url("https://upload.wikimedia.org/wikipedia/commons/e/e3/Chess_kdt60.png") }
 
-.white-queen {}
+.white-queen { background-image: url("https://upload.wikimedia.org/wikipedia/commons/4/49/Chess_qlt60.png") }
 
-.black-queen {}
+.black-queen { background-image: url("https://upload.wikimedia.org/wikipedia/commons/a/af/Chess_qdt60.png") }
 
-.white-rook {}
+.white-rook { background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/5c/Chess_rlt60.png") }
 
-.black-rook {}
+.black-rook { background-image: url("https://upload.wikimedia.org/wikipedia/commons/a/a0/Chess_rdt60.png") }
 
-.white-bishop {}
+.white-bishop { background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/9b/Chess_blt60.png") }
 
-.black-bishop {}
+.black-bishop { background-image: url("https://upload.wikimedia.org/wikipedia/commons/8/81/Chess_bdt60.png") }
 
-.white-knight {}
+.white-knight { background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/28/Chess_nlt60.png") }
 
-.black-knight {}
+.black-knight { background-image: url("https://upload.wikimedia.org/wikipedia/commons/f/f1/Chess_ndt60.png") }

@@ -4,6 +4,7 @@
   var Game = Chess.Game = function ($el) {
     this.board = new Chess.Board();
     this.board.setupBoard($el);
+    this.board.populateBoard();
     this.current_player = 'white';
   }
 
