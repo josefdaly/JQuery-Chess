@@ -16,7 +16,7 @@
             this.board.pieceAt(new_pos).color === this.color) {
         moves.pop();
       }
-    })
+    }.bind(this))
 
     return moves;
   }

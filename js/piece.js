@@ -28,15 +28,16 @@
   Piece.prototype.validMoves = function () {
     var validMoves = [];
     this.moves().forEach(function(move) {
-      if (moveIntoCheck(move) === false) {
+      if (this.moveIntoCheck(move) === false) {
         validMoves.push(move);
       }
-    })
+    }.bind(this))
     return validMoves;
   }
 
   Piece.prototype.moveIntoCheck = function (move) {
     //we'll get here
+    return false;
   }
 
   Piece.prototype.sumPositions = function (pos1, pos2) {

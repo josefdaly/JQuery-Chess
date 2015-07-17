@@ -7,7 +7,7 @@
   SlidingPiece.prototype.moves = function () {
     var moves = []
     var that = this;
-    this.moveDirs.forEach(function(dir) {
+    this.moveDirs().forEach(function(dir) {
       moves.concat(that.explore(dir));
     })
 
