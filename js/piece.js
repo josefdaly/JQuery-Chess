@@ -1,9 +1,9 @@
 (function () {
   window.Chess = window.Chess || {};
-  var Piece = Chess.Piece = function (board, color, pos) {
-    this.board = board;
-    this.color = color;
-    this.pos = pos;
+  var Piece = Chess.Piece = function (params) {
+    this.board = params.board;
+    this.color = params.color;
+    this.pos = params.pos;
     this.moved = false;
   }
 
@@ -14,7 +14,7 @@
       var enemyColor = 'white';
     }
     this.board.pieces(enemyColor).forEach(function(piece) {
-      if piece.validMoves.includes(this.pos) {
+      if (piece.validMoves.includes(this.pos)) {
         return true;
       }
     })

@@ -4,7 +4,7 @@
   var GameView = Chess.GameView = function ($el) {
     this.$el = $el
     this.createBoardElements();
-    // this.game = new Chess.Game($el);
+    this.game = new Chess.Game();
   }
 
   GameView.prototype.createBoardElements = function () {
@@ -23,8 +23,12 @@
     }
   }
 
-  GameView.prototype.render = function () {
+  GameView.prototype.clearPieces = function () {
+    //Remove all piece classes from board dom els
+  }
 
+  GameView.prototype.renderPieces = function () {
+    //Set piece classes to board dom els based on Game.board
   }
 
 })();

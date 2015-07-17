@@ -2,14 +2,15 @@
   window.Chess = window.Chess || {};
 
   var Board = Chess.Board = function (options) {
-    // this.setupBoard();
-    // if (options.setup === 'true') {
-    //   this.populate_board();
-    // }
+    this.grid = new Array(8);
+    this.setupBoard();
+    if (options.setup === 'true') {
+      this.populateBoard();
+    }
   }
 
   Board.prototype.setupBoard = function () {
-    this.grid = new Array(8);
+    debugger
     for (var i = 0; i < 8; i++) {
       this.grid[i] = new Array(8);
     }
@@ -18,22 +19,52 @@
         this.grid[i][j] = 0;
       }
     }
+    debugger
   }
 
   Board.prototype.populateBoard = function () {
-    [['black', 0, 1], ['white', 7, 6]].forEach(function (arr) {
-      $('#' + arr[1] + '0').addClass(arr[0] + '-rook')
-      $('#' + arr[1] + '1').addClass(arr[0] + '-knight')
-      $('#' + arr[1] + '2').addClass(arr[0] + '-bishop')
-      $('#' + arr[1] + '3').addClass(arr[0] + '-queen')
-      $('#' + arr[1] + '4').addClass(arr[0] + '-king')
-      $('#' + arr[1] + '5').addClass(arr[0] + '-bishop')
-      $('#' + arr[1] + '6').addClass(arr[0] + '-knight')
-      $('#' + arr[1] + '7').addClass(arr[0] + '-rook')
-      for (var i = 0; i < 8; i++) {
-        $('#' + arr[2] + '' + i).addClass(arr[0] + '-pawn')
-      }
-    });
+    [['black', 0], ['white', 7]].forEach(function (arr) {
+      this.grid[arr[1]][0] = new Chess.Rook({
+        board: this,
+        color: arr[0],
+        pos: [arr[1], 0]
+      })
+      this.grid[arr[1]][1] = new Chess.Knight({
+        board: this,
+        color: arr[0],
+        pos: [arr[1], 1]
+      })
+      this.grid[arr[1]][2] = new Chess.Bishop({
+        board: this,
+        color: arr[0],
+        pos: [arr[1], 2]
+      })
+      this.grid[arr[1]][3] = new Chess.Queen({
+        board: this,
+        color: arr[0],
+        pos: [arr[1], 3]
+      })
+      this.grid[arr[1]][4] = new Chess.King({
+        board: this,
+        color: arr[0],
+        pos: [arr[1], 4]
+      })
+      this.grid[arr[1]][5] = new Chess.Bishop({
+        board: this,
+        color: arr[0],
+        pos: [arr[1], 5]
+      })
+      this.grid[arr[1]][6] = new Chess.Knight({
+        board: this,
+        color: arr[0],
+        pos: [arr[1], 6]
+      })
+      this.grid[arr[1]][7] = new Chess.Rook({
+        board: this,
+        color: arr[0],
+        pos: [arr[1], 7]
+      })
+    }.bind(this));
   }
 
   Board.p

@@ -2,9 +2,8 @@
   window.Chess = window.Chess || {};
 
   var Game = Chess.Game = function ($el) {
-    this.board = new Chess.Board();
-    this.board.setupBoard($el);
-    this.board.populateBoard();
+    this.board = new Chess.Board({setup: 'true'});
+    debugger
     this.current_player = 'white';
   }
 
