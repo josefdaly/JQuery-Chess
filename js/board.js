@@ -13,7 +13,8 @@
   Board.prototype.move = function (startPos, endPos, color) {
     var currentPiece = this.pieceAt(startPos);
     debugger
-    if (currentPiece.validMoves().includes(endPos)) {
+    console.log(currentPiece.validMoves().includes(endPos))
+    if (currentPiece.validMoves().includes(endPos) === true) {
       this.moveBang(startPos, endPos)
       return true;
     } else {
@@ -24,7 +25,7 @@
 
   Board.prototype.moveBang = function (startPos, endPos) {
     var currentPiece = this.pieceAt(startPos);
-    this.grid[startPos[0]][startpos[1]] = 0;
+    this.grid[startPos[0]][startPos[1]] = 0;
     this.grid[endPos[0]][endPos[1]] = currentPiece;
     currentPiece.pos = endPos;
     currentPiece.moved = true;

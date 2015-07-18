@@ -34,8 +34,9 @@
       if (that.$startSquare && that.$endSquare) {
         startPos = [that.$startSquare.attr('id')[0], that.$startSquare.attr('id')[1]];
         endPos = [that.$endSquare.attr('id')[0], that.$endSquare.attr('id')[1]];
+        var piece = that.game.board.pieceAt(startPos);
         if (that.game.makeMove(startPos, endPos)) {
-          that.movePieceView(startPos, endPos)
+          that.movePieceView(piece, startPos, endPos)
         }
         that.$startSquare = null;
         that.$endSquare = null;
@@ -79,10 +80,9 @@
     }
   }
 
-  GameView.prototype.movePieceView = function (startPos, endPos) {
-    var piece = this.game.board.pieceAt(startPos);
+  GameView.prototype.movePieceView = function (piece, startPos, endPos) {
     var pieceClass = piece.color + '-' + piece.name;
-    $('.' + pieceClass).removeClass(pieceClass);
+    $('#' + startPos[0] + '' + startPos[1]).removeClass(pieceClass);
     $('#' + endPos[0] + '' + endPos[1]).addClass(pieceClass);
   }
 

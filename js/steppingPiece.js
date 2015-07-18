@@ -7,11 +7,13 @@
 
   SteppingPiece.prototype.moves = function () {
     var moves = [];
+    debugger;
     this.moveDiffs().forEach(function (diff) {
-      new_pos = [this.pos[0] + diff[0], this.pos[1] + diff[1]];
+      new_pos = [parseInt(this.pos[0]) + parseInt(diff[0]), parseInt(this.pos[1]) + parseInt(diff[1])];
       if (this.board.onBoard(new_pos)) {
         moves.push(new_pos);
       }
+      debugger;
       if (this.board.occupied(new_pos) &&
             this.board.pieceAt(new_pos).color === this.color) {
         moves.pop();

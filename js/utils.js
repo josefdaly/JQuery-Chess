@@ -9,19 +9,24 @@
   };
 
   Array.prototype.includes = function (el) {
+    var returnVal = false
     if (typeof el === 'object') {
+      console.log('got here' + el)
+      this.forEach(function(pos) {
+        console.log(el)
+        console.log(pos)
+        console.log(((pos[0] == el[0]) && (pos[1] == el[1])))
+        if ((pos[0] == el[0]) && (pos[1] == el[1])) {
+          returnVal =  true;
+        }
+      });
+    } else {
       for (var i = 0; i < this.length; i++) {
-         if (this[i][0] === el[0] && this[i][1] === el[1]) {
-           return true;
+         if (this[i] === el) {
+           returnVal = true;
         }
       }
     }
-
-    for (var i = 0; i < this.length; i++) {
-       if (this[i] === el) {
-         return true;
-      }
-    }
-    return false;
+    return returnVal;
   }
 })();

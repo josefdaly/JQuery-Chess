@@ -27,6 +27,7 @@
 
   Piece.prototype.validMoves = function () {
     var validMoves = [];
+    debugger
     this.moves().forEach(function(move) {
       if (this.moveIntoCheck(move) === false) {
         validMoves.push(move);
