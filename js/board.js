@@ -12,7 +12,6 @@
 
   Board.prototype.move = function (startPos, endPos, color) {
     var currentPiece = this.pieceAt(startPos);
-    debugger
     console.log(currentPiece.validMoves().includes(endPos))
     if (currentPiece.validMoves().includes(endPos) === true) {
       this.moveBang(startPos, endPos)
@@ -108,7 +107,14 @@
   }
 
   Board.prototype.populateBoard = function () {
-    [['black', 0], ['white', 7]].forEach(function (arr) {
+    [['black', 0, 1], ['white', 7, 6]].forEach(function (arr) {
+      for (var i = 0; i < 8; i++) {
+        this.grid[arr[2]][i] = new Chess.Pawn({
+          board: this,
+          color: arr[0],
+          pos: [arr[2], i]
+        })
+      }
       this.grid[arr[1]][0] = new Chess.Rook({
         board: this,
         color: arr[0],

@@ -8,7 +8,6 @@
     this.renderPieces();
     this.$startSquare = null;
     this.$endSquare = null;
-
     this.bindEvents();
   }
 
