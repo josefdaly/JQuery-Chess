@@ -82,7 +82,17 @@
   GameView.prototype.movePieceView = function (piece, startPos, endPos) {
     var pieceClass = piece.color + '-' + piece.name;
     $('#' + startPos[0] + '' + startPos[1]).removeClass(pieceClass);
-    $('#' + endPos[0] + '' + endPos[1]).addClass(pieceClass);
+    var $endSpot = $('#' + endPos[0] + '' + endPos[1])
+    var classNames = $endSpot.attr('class').split(' ')
+
+    for (var i = 0; i < classNames.length; i++) {
+      if (classNames[i] != 'odd' &&
+            classNames[i] != 'even' &&
+              classNames[i] != 'square') {
+        $endSpot.removeClass(classNames[i])
+      }
+    }
+    $endSpot.addClass(pieceClass);
   }
 
 })();
