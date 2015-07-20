@@ -17,7 +17,28 @@
     } else {
       var modifier = -1;
     }
+    debugger
+    var normalMove = this.sumPositions(
+      [this.normalMove[0] * modifier, this.normalMove[1] * modifier], this.pos)
+    if (this.board.occupied(normalMove) === false) {
+      moves.push(normalMove)
+    }
 
-    // var normalMove = this.sumPositions()
+    var initialMove = this.sumPositions(
+      [this.initialMove[0] * modifier, this.initialMove[1] * modifier], this.pos)
+    if (this.board.occupied(initialMove) === false &&
+          moves.includes(normalMove) === true &&
+            this.moved === false) {
+      moves.push(initialMove)
+    }
+
+    var movesToReturn = [];
+    moves.forEach(function(move) {
+      if (this.board.onBoard(move) === true) {
+        movesToReturn.push(move);
+      }
+    }.bind(this))
+
+    return movesToReturn;
   }
 })();
