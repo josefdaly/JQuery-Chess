@@ -12,6 +12,7 @@
 
   Pawn.prototype.moves = function () {
     var moves = [];
+    var pos = [parseInt(this.pos[0]), parseInt(this.pos[1])];
     if (this.color === 'black') {
       var modifier = 1;
     } else {
@@ -19,13 +20,13 @@
     }
     debugger
     var normalMove = this.sumPositions(
-      [this.normalMove[0] * modifier, this.normalMove[1] * modifier], this.pos)
+      [this.normalMove[0] * modifier, this.normalMove[1] * modifier], pos)
     if (this.board.occupied(normalMove) === false) {
       moves.push(normalMove)
     }
 
     var initialMove = this.sumPositions(
-      [this.initialMove[0] * modifier, this.initialMove[1] * modifier], this.pos)
+      [this.initialMove[0] * modifier, this.initialMove[1] * modifier], pos)
     if (this.board.occupied(initialMove) === false &&
           moves.includes(normalMove) === true &&
             this.moved === false) {
