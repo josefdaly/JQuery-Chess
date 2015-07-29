@@ -27,7 +27,7 @@
 
   Piece.prototype.validMoves = function () {
     var validMoves = [];
-    
+
     this.moves().forEach(function(move) {
       if (this.moveIntoCheck(move) === false) {
         validMoves.push(move);
@@ -42,6 +42,9 @@
   }
 
   Piece.prototype.sumPositions = function (pos1, pos2) {
-    return [pos1[0] + pos2[0], pos1[1] + pos2[1]];
+    return [
+      parseInt(pos1[0]) + parseInt(pos2[0]),
+      parseInt(pos1[1]) + parseInt(pos2[1])
+    ];
   }
 })();
