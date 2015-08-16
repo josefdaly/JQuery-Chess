@@ -34,13 +34,68 @@
         startPos = [that.$startSquare.attr('id')[0], that.$startSquare.attr('id')[1]];
         endPos = [that.$endSquare.attr('id')[0], that.$endSquare.attr('id')[1]];
         var piece = that.game.board.pieceAt(startPos);
+        //move piece
         if (that.game.makeMove(startPos, endPos)) {
-          that.movePieceView(piece, startPos, endPos)
+          that.movePieceView(piece, startPos, endPos);
+          that.getAiMove();
         }
         that.$startSquare = null;
         that.$endSquare = null;
       }
     })
+  }
+
+  GameView.prototype.getAiMove = function () {
+    var moveString = "";
+    this.game.moves.forEach(function(move){
+      moveString = moveString + move;
+    });
+    $.ajax({
+        type: "GET",
+        url: 'http://chess-api.herokuapp.com/next_best/' + moveString,
+        crossDomain: true,
+        dataType: "json",
+        success: function(response) {
+            this.performComputerMove(response.bestNext);
+        }.bind(this),
+        error: function(response) {
+            console.log(response);
+        }
+    });
+  }
+
+  GameView.prototype.performComputerMove = function (moveString) {
+    var VERT = {
+     '8': 0,
+     '7': 1,
+     '6': 2,
+     '5': 3,
+     '4': 4,
+     '3': 5,
+     '2': 6,
+     '1': 7
+    }
+    var HORIZ = {
+      'a': 0,
+      'b': 1,
+      'c': 2,
+      'd': 3,
+      'e': 4,
+      'f': 5,
+      'g': 6,
+      'h': 7,
+    }
+    this.game.moves.push(moveString);
+    var startPos = [
+      VERT[moveString[1]],
+      HORIZ[moveString[0]]
+    ]
+    var endPos = [
+      VERT[moveString[3]],
+      HORIZ[moveString[2]]
+    ]
+    this.game.board.moveBang(startPos, endPos);
+    this.movePieceView(this.game.board.pieceAt(endPos), startPos, endPos);
   }
 
   GameView.prototype.createBoardElements = function () {
@@ -78,6 +133,7 @@
       }
     }
   }
+
 
   GameView.prototype.movePieceView = function (piece, startPos, endPos) {
     var pieceClass = piece.color + '-' + piece.name;

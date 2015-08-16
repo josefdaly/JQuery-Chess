@@ -70,10 +70,20 @@
 
   Board.prototype.inCheck = function (color) {
     //check for check
+    // if (color === 'white') {
+    //   var opponentColor = 'black';
+    // }  else {
+    //   var opponentColor = 'white';
+    // }
+    // var enemyPieces =
+    return false;
   }
 
   Board.prototype.deepDup = function () {
     //dup board and pieces
+    var newBoard = jQuery.extend(true, {}, this);
+
+    return newBoard;
   }
 
   Board.prototype.pieces = function (color) {
