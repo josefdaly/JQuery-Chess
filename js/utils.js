@@ -10,7 +10,7 @@
 
   Array.prototype.includes = function (el) {
     var returnVal = false
-    if (typeof el === 'object') {
+    if (el.length) {
       console.log('got here' + el)
       this.forEach(function(pos) {
         console.log(el)
